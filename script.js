@@ -12,3 +12,10 @@ function getComputerChoice() {
         return "Scissors";
     }
 }
+
+function capitalize(string) {
+    const firstLetter = string[0].toUpperCase();
+    const subString = string.substring(1).toLowerCase();
+
+    return firstLetter + subString;
+}
