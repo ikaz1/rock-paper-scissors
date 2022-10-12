@@ -1,2 +1,2 @@
 # rock-paper-scissors
-JavaScript rock paper scissors program from Odin Project foundations course.
+Basic JavaScript rock, paper, scissors game from The Odin Project. 
