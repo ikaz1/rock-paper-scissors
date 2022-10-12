@@ -63,3 +63,22 @@ function playRound(playerSelection, computerSelection) {
         return "I don't recognize that choice";
     }
 }
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        const playerChoice = prompt("There are 5 rounds! Choose either Rock, Paper, or Scissors!");
+        const computerChoice = getComputerChoice();
+
+        alert(playRound(playerChoice, computerChoice));
+    }
+
+    if (playerScore > computerScore) {
+        alert("You WIN the game!");
+    } else if (playerScore < computerScore) {
+        alert("You LOSE the game!")
+    } else {
+        alert("The game is TIED!");
+    }
+}
+
+game();
