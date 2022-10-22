@@ -1,7 +1,9 @@
+const buttonChoice = document.querySelectorAll('.player-choice');
+const buttonPlayAgain = document.querySelector('#btn-play-again');
 const playerResult = document.querySelector('#player-score');
 const computerResult = document.querySelector('#computer-score');
-const buttons = document.querySelectorAll('button');
 const results = document.querySelector('.results');
+const choiceDisplay = document.querySelector('#choice-display');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -21,8 +23,7 @@ function playRound(e) {
     const computerChoice = getComputerChoice();
     const playerChoice = e.target.innerText;
 
-    document.querySelector('#choices').textContent = 
-        `You chose ${playerChoice} and the computer chose ${computerChoice}!`;
+    choiceDisplay.textContent = `You chose ${playerChoice} and the computer chose ${computerChoice}!`;
 
     if (playerChoice === computerChoice) {
         results.textContent = `It's a DRAW!`; 
@@ -56,10 +57,27 @@ function playRound(e) {
     computerResult.textContent = computerScore;
 }
 
-function game(e) {
+function startGame(e) {
     if (playerScore < 5 && computerScore < 5) playRound(e);
-    if (playerScore === 5) results.textContent = 'YOU WIN THE GAME!';
-    if (computerScore === 5) results.textContent = 'YOU LOSE THE GAME!';
+    if (playerScore === 5) {
+        results.textContent = 'YOU WIN THE GAME!';
+        buttonPlayAgain.style.display = 'block';
+    } else if (computerScore === 5) {
+        results.textContent = 'YOU LOSE THE GAME!';
+        buttonPlayAgain.style.display = 'block';
+    }
 }
 
-buttons.forEach(btn => btn.addEventListener('click', game));
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerResult.textContent = 0;
+    computerResult.textContent = 0;
+    results.textContent = '';
+    choiceDisplay.textContent = '';
+
+    buttonPlayAgain.style.display = 'none';
+}
+
+buttonChoice.forEach(btn => btn.addEventListener('click', startGame));
+buttonPlayAgain.addEventListener('click', resetGame)
