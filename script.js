@@ -1,9 +1,9 @@
-let playerScore = 0;
-let computerScore = 0;
 const playerResult = document.querySelector('#player-score');
 const computerResult = document.querySelector('#computer-score');
 const buttons = document.querySelectorAll('button');
 const results = document.querySelector('.results');
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let randomChoice = Math.floor(Math.random() * 3) + 1;
@@ -43,7 +43,7 @@ function playRound(e) {
             results.textContent = 'You LOSE! Scissors beats Paper!';
         }
     } else {
-        if (computerChoice=== "Rock") { // LOSE rock beats scissors
+        if (computerChoice === "Rock") { // LOSE rock beats scissors
             computerScore++;
             results.textContent = 'You LOSE! Rock beats Scissors!'
         } else { // WIN scissors beats paper
@@ -56,4 +56,10 @@ function playRound(e) {
     computerResult.textContent = computerScore;
 }
 
-buttons.forEach(btn => btn.addEventListener('click', playRound));
+function game(e) {
+    if (playerScore < 5 && computerScore < 5) playRound(e);
+    if (playerScore === 5) results.textContent = 'YOU WIN THE GAME!';
+    if (computerScore === 5) results.textContent = 'YOU LOSE THE GAME!';
+}
+
+buttons.forEach(btn => btn.addEventListener('click', game));
