@@ -1,3 +1,49 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-blue: #111827;
+    --white: #E5E7EB;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: var(--white);
+    background: var(--dark-blue);
+}
+
+button {
+    margin: 0 10px;
+    padding: 5px 25px;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--white);
+    background: var(--dark-blue);
+    border: 3px solid var(--white);
+    border-radius: 10px;
+    transition: all 150ms ease-in;
+}
+
+button:hover {
+    color: var(--dark-blue);
+    background: var(--white);
+}
+
+i {
+    color: var(--white);
+    background: var(--white);
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+}
+
 #btn-play-again {
-    display: none;
+    visibility: hidden;
 }

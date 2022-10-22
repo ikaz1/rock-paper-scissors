@@ -2,7 +2,7 @@ const buttonChoice = document.querySelectorAll('.player-choice');
 const buttonPlayAgain = document.querySelector('#btn-play-again');
 const playerResult = document.querySelector('#player-score');
 const computerResult = document.querySelector('#computer-score');
-const results = document.querySelector('.results');
+const results = document.querySelector('#results');
 const choiceDisplay = document.querySelector('#choice-display');
 let playerScore = 0;
 let computerScore = 0;
@@ -61,10 +61,10 @@ function startGame(e) {
     if (playerScore < 5 && computerScore < 5) playRound(e);
     if (playerScore === 5) {
         results.textContent = 'YOU WIN THE GAME!';
-        buttonPlayAgain.style.display = 'block';
+        buttonPlayAgain.style.visibility = 'visible';
     } else if (computerScore === 5) {
         results.textContent = 'YOU LOSE THE GAME!';
-        buttonPlayAgain.style.display = 'block';
+        buttonPlayAgain.style.visibility = 'visible';
     }
 }
 
@@ -76,7 +76,7 @@ function resetGame() {
     results.textContent = '';
     choiceDisplay.textContent = '';
 
-    buttonPlayAgain.style.display = 'none';
+    buttonPlayAgain.style.visibility = 'hidden';
 }
 
 buttonChoice.forEach(btn => btn.addEventListener('click', startGame));

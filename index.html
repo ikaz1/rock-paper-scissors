@@ -7,22 +7,32 @@
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/ea6e9201dc.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Rock Paper Scissors!</h1>
-    <h3>First to 5 points wins!</h3>
+    <div class="container">
+        <h1>Rock Paper Scissors!</h1>
+        <h3>First to 5 points wins!</h3>
 
-    <button class="player-choice" id="btn-rock">Rock</button>
-    <button class="player-choice" id="btn-paper">Paper</button>
-    <button class="player-choice" id="btn-scissors">Scissors</button>
+        <button class="player-choice" id="btn-rock">
+            Rock
+        </button>
+        <button class="player-choice" id="btn-paper">
+            Paper
+        </button>
+        <button class="player-choice" id="btn-scissors">
+            Scissors
+        </button>
 
-    <p id="choice-display"></p>
-    <div class="results"></div>
-    <br>
-    <div id="score">
-        Your Score : <span id="player-score">0</span> | 
-        Computer's Score : <span id="computer-score">0</span>
-    </div>   
-    <button id="btn-play-again">Play again</button>
+        <p id="choice-display"></p>
+        <div id="results"></div>
+
+        <div id="score">
+            Your Score : <span id="player-score">0</span> | 
+            Computer's Score : <span id="computer-score">0</span>
+        </div>
+
+        <button id="btn-play-again">Play again</button>
+    </div>
 </body>
 </html>
