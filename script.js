@@ -1,9 +1,10 @@
 const playerOptions = document.querySelectorAll('.option');
 const buttonPlayAgain = document.querySelector('#btn-play-again');
+const results = document.querySelector('#results');
 const playerResult = document.querySelector('#player-score');
 const botResult = document.querySelector('#bot-score');
-const results = document.querySelector('#results');
-const choiceDisplay = document.querySelector('#choice-display');
+const playerIcon = document.querySelector('#player-choice-icon');
+const botIcon = document.querySelector('#bot-choice-icon');
 let playerScore = 0;
 let botScore = 0;
 
@@ -23,7 +24,7 @@ function playRound(e) {
     const botChoice = getBotChoice();
     const playerChoice = e.target.innerText;
 
-    choiceDisplay.textContent = `You chose ${playerChoice} and the computer chose ${botChoice}!`;
+    displayChoice(playerChoice, botChoice);
 
     if (playerChoice === botChoice) {
         results.textContent = `It's a DRAW!`; 
@@ -58,7 +59,9 @@ function playRound(e) {
 }
 
 function startGame(e) {
+    console.log(e)
     if (playerScore < 5 && botScore < 5) playRound(e);
+
     if (playerScore === 5) {
         results.textContent = 'YOU WIN THE GAME!';
         buttonPlayAgain.style.visibility = 'visible';
@@ -74,13 +77,25 @@ function resetGame() {
     playerResult.textContent = 0;
     botResult.textContent = 0;
     results.textContent = '';
-    choiceDisplay.textContent = '';
+
+    playerIcon.removeAttribute('class');
+    botIcon.removeAttribute('class');
 
     buttonPlayAgain.style.visibility = 'hidden';
 }
 
 function displayChoice(player, bot) {
-    if (player === "Rock") icon.classList = 'fa-regular fa-hand';
+    const rockClass = 'fa-regular fa-hand-back-fist';
+    const paperClass = 'fa-regular fa-hand';
+    const scissorsClass = 'fa-regular fa-hand-scissors';
+
+    (player === "Rock") ? playerIcon.classList = rockClass 
+    : (player === "Paper") ? playerIcon.classList = paperClass 
+    : playerIcon.classList = scissorsClass;
+
+    (bot === "Rock") ? botIcon.classList = rockClass 
+        : (bot === "Paper") ? botIcon.classList = paperClass 
+        : botIcon.classList = scissorsClass;
 }
 
 playerOptions.forEach(btn => btn.addEventListener('click', startGame));
