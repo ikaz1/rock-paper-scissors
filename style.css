@@ -9,6 +9,7 @@
     --white: #E5E7EB;
 }
 
+/* global */
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
@@ -34,16 +35,48 @@ button:hover {
 }
 
 i {
+    font-size: 4rem;
     color: var(--white);
-    background: var(--white);
 }
 
+hr {
+    width: 34rem;
+    margin: 8px auto;
+    border: 2px solid var(--white);    
+}
+
+hr:last-of-type {
+    width: 25rem;
+    margin-bottom: 20px;
+}
+
+/* container */
 .container {
     width: 70%;
     margin: 0 auto;
     text-align: center;
 }
 
+/* display*/
+#display-choice {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.show-choice {
+    height: 300px;
+    width: 300px;
+    margin: 10px 20px 30px;
+    border: 3px solid var(--white);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #btn-play-again {
     visibility: hidden;
 }
+

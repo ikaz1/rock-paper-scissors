@@ -12,15 +12,33 @@
 <body>
     <div class="container">
         <h1>Rock Paper Scissors!</h1>
+        <hr>
+        <hr>
         <h3>First to 5 points wins!</h3>
 
-        <button class="player-choice" id="btn-rock">
+        <div id="display-choice">
+            <div id="player-display">
+                <i class="fa-solid fa-user"></i>
+                <div class="show-choice">
+                    <i id="icon-player"></i>
+                    <!-- <i class="fa-regular fa-hand"></i> -->
+                    <!-- <i class="fa-regular fa-hand-back-fist"></i> -->
+                    <!-- <i class="fa-regular fa-hand-scissors"></i> -->
+                </div>
+            </div>
+            <div id="bot-display">
+                <i class="fa-solid fa-robot"></i>
+                <div class="show-choice"></div>
+            </div>
+        </div>
+
+        <button class="option" id="btn-rock">
             Rock
         </button>
-        <button class="player-choice" id="btn-paper">
+        <button class="option" id="btn-paper">
             Paper
         </button>
-        <button class="player-choice" id="btn-scissors">
+        <button class="option" id="btn-scissors">
             Scissors
         </button>
 
@@ -29,7 +47,7 @@
 
         <div id="score">
             Your Score : <span id="player-score">0</span> | 
-            Computer's Score : <span id="computer-score">0</span>
+            Computer's Score : <span id="bot-score">0</span>
         </div>
 
         <button id="btn-play-again">Play again</button>
