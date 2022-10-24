@@ -90,8 +90,8 @@ function displayChoice(player, bot) {
     const scissorsClass = 'fa-regular fa-hand-scissors';
 
     (player === "Rock") ? playerIcon.classList = rockClass 
-    : (player === "Paper") ? playerIcon.classList = paperClass 
-    : playerIcon.classList = scissorsClass;
+        : (player === "Paper") ? playerIcon.classList = paperClass 
+        : playerIcon.classList = scissorsClass;
 
     (bot === "Rock") ? botIcon.classList = rockClass 
         : (bot === "Paper") ? botIcon.classList = paperClass 
