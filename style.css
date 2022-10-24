@@ -59,11 +59,19 @@ hr:last-of-type {
 }
 
 /* lives */
+.user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .lives {
     width: 159px;
     height: 39px;
+    margin-top: 5px;;
+    margin-left: 15px;
     padding: 5px;
-    display: inline-flex;
+    display: flex;
     justify-content: left;
     gap: 5px;
     border: 2px solid var(--white);
