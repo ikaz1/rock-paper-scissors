@@ -1,56 +1,60 @@
 const playerOptions = document.querySelectorAll('.option');
-const buttonPlayAgain = document.querySelector('#btn-play-again');
+const playAgainBtn = document.querySelector('#btn-play-again');
 const results = document.querySelector('#results');
 
-const playerLives = document.querySelector('.player');
-const botLives = document.querySelector('.bot');
+const rockBtn = document.querySelector('#btn-rock'),
+      paperBtn = document.querySelector('#btn-paper'),
+      scissorsBtn = document.querySelector('#btn-scissors');
 
-const playerResult = document.querySelector('#player-score');
-const botResult = document.querySelector('#bot-score');
+const playerLives = document.querySelector('.player'),
+      botLives = document.querySelector('.bot');
 
-const playerIcon = document.querySelector('#player-choice-icon');
-const botIcon = document.querySelector('#bot-choice-icon');
+const playerIcon = document.querySelector('#player-choice-icon'),
+      botIcon = document.querySelector('#bot-choice-icon');
 
-let playerScore = 5;
-let botScore = 5;
+let playerScore = 5, 
+    botScore = 5;
 
 
 function getRandomChoice() {
     let randomChoice = Math.floor(Math.random() * 3) + 1;
 
-    return (randomChoice === 1) ? 'Rock' 
-        : (randomChoice === 2) ? 'Paper' : 'Scissors';
+    return (randomChoice === 1 ) ? 'Rock' 
+        : (randomChoice === 3) ? 'Paper' : 'Scissors';
 }
 
-function removeLife(user, score) {
-    user.removeChild(user.lastElementChild);
-    score -= 1;
+function hideButtons() {
+    rockBtn.style.display = 'none';
+    paperBtn.style.display = 'none';
+    scissorsBtn.style.display = 'none';
+
+    playAgainBtn.style.display = 'block';
 }
 
 function displayChoice(player, bot) {
-    const rockClass = 'fa-regular fa-hand-back-fist';
-    const paperClass = 'fa-regular fa-hand';
-    const scissorsClass = 'fa-regular fa-hand-scissors';
+    const rockClass = 'fa-regular fa-hand-back-fist', 
+          paperClass = 'fa-regular fa-hand',
+          scissorsClass = 'fa-regular fa-hand-scissors';
 
-    (player === "Rock") ? playerIcon.classList = rockClass 
-        : (player === "Paper") ? playerIcon.classList = paperClass 
+    (player === 'Rock') ? playerIcon.classList = rockClass 
+        : (player === 'Paper') ? playerIcon.classList = paperClass 
         : playerIcon.classList = scissorsClass;
 
-    (bot === "Rock") ? botIcon.classList = rockClass 
-        : (bot === "Paper") ? botIcon.classList = paperClass 
+    (bot === 'Rock') ? botIcon.classList = rockClass 
+        : (bot === 'Paper') ? botIcon.classList = paperClass 
         : botIcon.classList = scissorsClass;
 }
 
 function playRound(e) {
-    const botChoice = getRandomChoice();
     const playerChoice = e.target.innerText;
+    const botChoice = getRandomChoice();
 
     displayChoice(playerChoice, botChoice);
 
     if (playerChoice === botChoice) {
         results.textContent = `It's a DRAW!`; 
-    } else if (playerChoice === "Rock") {
-        if (botChoice === "Scissors") { // WIN rock beats scissors
+    } else if (playerChoice === 'Rock') {
+        if (botChoice === 'Scissors') { // WIN rock beats scissors
             botLives.removeChild(botLives.lastElementChild);
             botScore--;
             results.textContent = 'You WIN! Rock beats Scissors!';
@@ -59,8 +63,8 @@ function playRound(e) {
             playerScore--;
             results.textContent = 'You LOSE! Paper beats Rock!';
         }
-    } else if (playerChoice === "Paper") {
-        if (botChoice === "Rock") { // WIN paper beats rock
+    } else if (playerChoice === 'Paper') {
+        if (botChoice === 'Rock') { // WIN paper beats rock
             botLives.removeChild(botLives.lastElementChild);
             botScore--;
             results.textContent = 'You WIN! Paper beats Rock!';
@@ -70,10 +74,9 @@ function playRound(e) {
             results.textContent = 'You LOSE! Scissors beats Paper!';
         }
     } else {
-        if (botChoice === "Rock") { // LOSE rock beats scissors
+        if (botChoice === 'Rock') { // LOSE rock beats scissors
             playerLives.removeChild(playerLives.lastElementChild);
             playerScore--;
-            console.log(playerScore);
             results.textContent = 'You LOSE! Rock beats Scissors!'
         } else { // WIN scissors beats paper
             botLives.removeChild(botLives.lastElementChild);
@@ -81,9 +84,6 @@ function playRound(e) {
             results.textContent = 'You WIN! Scissors beats Paper!';
         }
     }
-
-    playerResult.textContent = playerScore;
-    botResult.textContent = botScore;
 }
 
 function startGame(e) {
@@ -92,25 +92,27 @@ function startGame(e) {
 
     if (botScore === 0) {
         results.textContent = 'YOU WIN THE GAME!';
-        buttonPlayAgain.style.visibility = 'visible';
+        hideButtons();
     } else if (playerScore === 0) {
         results.textContent = 'YOU LOSE THE GAME!';
-        buttonPlayAgain.style.visibility = 'visible';
+        hideButtons();
     }
 }
 
 function resetGame() {
-    playerScore = 0;
-    botScore = 0;
-    playerResult.textContent = 0;
-    botResult.textContent = 0;
+    playerScore = 5;
+    botScore = 5;
     results.textContent = '';
 
     playerIcon.removeAttribute('class');
     botIcon.removeAttribute('class');
 
-    buttonPlayAgain.style.visibility = 'hidden';
+    rockBtn.style.display = 'inline-block';
+    paperBtn.style.display = 'inline-block';
+    scissorsBtn.style.display = 'inline-block';
+
+    playAgainBtn.style.display = 'none';
 }
 
 playerOptions.forEach(btn => btn.addEventListener('click', startGame));
-buttonPlayAgain.addEventListener('click', resetGame)
+playAgainBtn.addEventListener('click', resetGame)

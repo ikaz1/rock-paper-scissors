@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
 * {
     margin:0;
     padding:0;
@@ -5,34 +7,39 @@
 }
 
 :root {
-    --dark-blue: #111827;
+    /* --dark: #111827; */
+    --dark: #161b24;
     --white: #E5E7EB;
 }
 
 /* global */
-body {
-    font-family: Arial, Helvetica, sans-serif;
+body, button {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Comic Neue', cursive;
     font-size: 30px;
+    font-weight: 700;
     color: var(--white);
-    background: var(--dark-blue);
+    background: var(--dark);
 }
 
 button {
     width: 12rem;
-    margin: 0 10px;
-    padding: 5px;
-    font-size: 25px;
-    font-weight: bold;
-    color: var(--white);
-    background: var(--dark-blue);
+    margin: 15px 10px;
+    padding: 8px;
+    font-size: 35px;
     border: 3px solid var(--white);
     border-radius: 10px;
     transition: all 150ms ease-in;
 }
 
 button:hover {
-    color: var(--dark-blue);
+    color: var(--dark);
     background: var(--white);
+}
+
+h1 {
+    padding: 20px 0 5px;
+    /* font-size: 4rem; */
 }
 
 i {
@@ -44,11 +51,21 @@ hr {
     width: 34rem;
     margin: 8px auto;
     border: 2px solid var(--white);
+    border-radius: 25px 7px 24px 2px;
 }
 
 hr:last-of-type {
     width: 25rem;
+    margin-top: 10px;
     margin-bottom: 20px;
+    border-radius: 2px 25px 7px 24px;
+}
+
+/* flex */
+.container, .user, .lives, #display-choice, .show-choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* container */
@@ -56,19 +73,14 @@ hr:last-of-type {
     width: 70%;
     margin: 0 auto;
     text-align: center;
+    flex-direction: column;
 }
 
-/* lives */
-.user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* player & bot lives */
 .lives {
     width: 159px;
     height: 39px;
-    margin-top: 5px;;
+    margin-top: 10px;
     margin-left: 15px;
     padding: 5px;
     display: flex;
@@ -84,12 +96,9 @@ hr:last-of-type {
     background: var(--white);
 }
 
-/* display*/
+/* choices display */
 #display-choice {
     padding: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 30px;
 }
 
@@ -104,9 +113,6 @@ hr:last-of-type {
     margin: 17px 0;
     border: 3px solid var(--white);
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .fa-user {
@@ -122,6 +128,10 @@ hr:last-of-type {
 }
 
 #btn-play-again {
-    visibility: hidden;
+    display: none;
+}
+
+#versus {
+    font-size: 40px;
 }
 
