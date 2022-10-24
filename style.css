@@ -16,7 +16,7 @@
 body, button {
     /* font-family: Arial, Helvetica, sans-serif; */
     font-family: 'Comic Neue', cursive;
-    font-size: 30px;
+    font-size: 34px;
     font-weight: 700;
     color: var(--white);
     background: var(--dark);
@@ -24,9 +24,8 @@ body, button {
 
 button {
     width: 12rem;
-    margin: 15px 10px;
+    margin: 10px 10px 20px;
     padding: 8px;
-    font-size: 35px;
     border: 3px solid var(--white);
     border-radius: 10px;
     transition: all 150ms ease-in;
@@ -39,7 +38,6 @@ button:hover {
 
 h1 {
     padding: 20px 0 5px;
-    /* font-size: 4rem; */
 }
 
 i {
@@ -131,7 +129,7 @@ hr:last-of-type {
     display: none;
 }
 
-#versus {
+#versus, #results {
     font-size: 40px;
 }
 

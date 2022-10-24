@@ -51,37 +51,19 @@ function playRound(e) {
 
     displayChoice(playerChoice, botChoice);
 
-    if (playerChoice === botChoice) {
-        results.textContent = `It's a DRAW!`; 
-    } else if (playerChoice === 'Rock') {
-        if (botChoice === 'Scissors') { // WIN rock beats scissors
+    (playerChoice === botChoice) ? results.textContent = `It's a DRAW!`
+        : (playerChoice === 'Rock') ? gameLogic('Scissors') 
+        : (playerChoice === 'Paper') ? gameLogic('Rock') : gameLogic('Paper');
+
+    function gameLogic(choice) {
+        if (botChoice === choice) {
             botLives.removeChild(botLives.lastElementChild);
+            results.textContent = `You WIN! ${playerChoice} beats ${botChoice}!`;
             botScore--;
-            results.textContent = 'You WIN! Rock beats Scissors!';
-        } else { // LOSE paper beats rock
+        } else {
             playerLives.removeChild(playerLives.lastElementChild);
+            results.textContent = `You LOSE! ${botChoice} beats ${playerChoice}!`;
             playerScore--;
-            results.textContent = 'You LOSE! Paper beats Rock!';
-        }
-    } else if (playerChoice === 'Paper') {
-        if (botChoice === 'Rock') { // WIN paper beats rock
-            botLives.removeChild(botLives.lastElementChild);
-            botScore--;
-            results.textContent = 'You WIN! Paper beats Rock!';
-        } else { // LOSE scissors beats paper
-            playerLives.removeChild(playerLives.lastElementChild);
-            playerScore--;
-            results.textContent = 'You LOSE! Scissors beats Paper!';
-        }
-    } else {
-        if (botChoice === 'Rock') { // LOSE rock beats scissors
-            playerLives.removeChild(playerLives.lastElementChild);
-            playerScore--;
-            results.textContent = 'You LOSE! Rock beats Scissors!'
-        } else { // WIN scissors beats paper
-            botLives.removeChild(botLives.lastElementChild);
-            botScore--;
-            results.textContent = 'You WIN! Scissors beats Paper!';
         }
     }
 }
@@ -111,8 +93,13 @@ function resetGame() {
     paperBtn.style.display = 'inline-block';
     scissorsBtn.style.display = 'inline-block';
 
+    playerLives.innerHTML = 
+        '<div></div><div></div><div></div><div></div><div></div>';
+    botLives.innerHTML = 
+        '<div></div><div></div><div></div><div></div><div></div>';
+
     playAgainBtn.style.display = 'none';
 }
 
 playerOptions.forEach(btn => btn.addEventListener('click', startGame));
-playAgainBtn.addEventListener('click', resetGame)
+playAgainBtn.addEventListener('click', resetGame);
