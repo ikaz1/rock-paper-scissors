@@ -97,11 +97,14 @@ function resetGame() {
     paperBtn.style.display = 'inline-block';
     scissorsBtn.style.display = 'inline-block';
 
-    playerLives.innerHTML = 
-        '<div></div><div></div><div></div><div></div><div></div>';
-    botLives.innerHTML = 
-        '<div></div><div></div><div></div><div></div><div></div>';
+    playerLives.innerHTML = '';
+    botLives.innerHTML = '';
 
+    for (let i = 0; i < 5; i++) {
+        playerLives.innerHTML += '<div></div>';
+        botLives.innerHTML += '<div></div>';
+    }
+    
     playAgainBtn.style.display = 'none';
 }
 
