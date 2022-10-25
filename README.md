@@ -1,2 +1,2 @@
 # rock-paper-scissors
-JS rock paper scissors game from the odin project.
+fun little rock paper scissors game made with JS for the odin project.
