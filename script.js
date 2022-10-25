@@ -74,9 +74,11 @@ function startGame(e) {
 
     if (botScore === 0) {
         results.textContent = 'YOU WIN THE GAME!';
+        results.style.color = 'var(--green)';
         hideButtons();
     } else if (playerScore === 0) {
         results.textContent = 'YOU LOSE THE GAME!';
+        results.style.color = 'var(--red)';
         hideButtons();
     }
 }
@@ -84,7 +86,9 @@ function startGame(e) {
 function resetGame() {
     playerScore = 5;
     botScore = 5;
-    results.textContent = '';
+
+    results.textContent = 'You have 5 lives!';
+    results.style.color = 'var(--white)';
 
     playerIcon.removeAttribute('class');
     botIcon.removeAttribute('class');
