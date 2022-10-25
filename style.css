@@ -3,7 +3,8 @@
 * {
     margin:0;
     padding:0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 :root {
@@ -30,6 +31,8 @@ button {
     padding: 8px;
     border: 3px solid var(--white);
     border-radius: 10px;
+    -webkit-transition: all 150ms ease-in;
+    -o-transition: all 150ms ease-in;
     transition: all 150ms ease-in;
 }
 
@@ -63,9 +66,15 @@ hr:last-of-type {
 
 /* flex */
 .container, .user, .lives, #display-choice, .show-choice {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 /* container */
@@ -73,7 +82,10 @@ hr:last-of-type {
     width: 70%;
     margin: 0 auto;
     text-align: center;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 /* player & bot lives */
@@ -83,8 +95,12 @@ hr:last-of-type {
     margin-top: 10px;
     margin-left: 15px;
     padding: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: left;
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left;
     gap: 5px;
     border: 2px solid var(--white);
     border-radius: 5px;
@@ -140,6 +156,8 @@ hr:last-of-type {
 
 footer {
     margin-bottom: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     font-size: 26px;
     text-align: center;
@@ -157,6 +175,8 @@ footer span {
 footer a {
     color: var(--white);
     text-decoration: none;
+    -webkit-transition: all 80ms ease-in-out;
+    -o-transition: all 80ms ease-in-out;
     transition: all 80ms ease-in-out;
 }
 
