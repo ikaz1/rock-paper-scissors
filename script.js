@@ -32,9 +32,9 @@ function hideButtons() {
 }
 
 function displayChoice(player, bot) {
-    const rockClass = 'fa-regular fa-hand-back-fist', 
-          paperClass = 'fa-regular fa-hand',
-          scissorsClass = 'fa-regular fa-hand-scissors';
+    const rockClass = 'fa-solid fa-hand-back-fist', 
+          paperClass = 'fa-solid fa-hand',
+          scissorsClass = 'fa-solid fa-hand-scissors';
 
     (player === 'Rock') ? playerIcon.classList = rockClass 
         : (player === 'Paper') ? playerIcon.classList = paperClass 
