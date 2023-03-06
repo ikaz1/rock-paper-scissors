@@ -1,71 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <script src="https://kit.fontawesome.com/ea6e9201dc.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div class="container">
-        <h1>Rock Paper Scissors!</h1>
-        <hr>
-        <hr>
-        <div id="results">You have 5 lives!</div>
-        <div id="display-choice">
-            <div id="player-display">
-                <div class="user">
-                    <i class="fa-solid fa-user"></i>
-                    <div class="player lives">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="script.js" defer></script>
+        <script src="https://kit.fontawesome.com/ea6e9201dc.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Rock Paper Scissors!</h1>
+
+            <hr />
+            <hr />
+
+            <div id="round-result">You have 5 lives!</div>
+
+            <div id="display-choice">
+                <div id="player-display">
+                    <div class="user">
+                        <i class="fa-solid fa-user"></i>
+
+                        <div class="player lives">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+
+                    <div class="choice-display">
+                        <i id="player-choice"></i>
                     </div>
                 </div>
-                <div class="show-choice">
-                    <i id="player-choice-icon"></i>
-                </div>
-            </div>
-            <div id="versus">vs.</div>
-            <div id="bot-display">
-                <div class="user">
-                    <i class="fa-solid fa-robot"></i>
-                    <div class="bot lives">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+
+                <div id="versus">vs.</div>
+
+                <div id="bot-display">
+                    <div class="user">
+                        <i class="fa-solid fa-robot"></i>
+
+                        <div class="bot lives">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+
+                    <div class="choice-display">
+                        <i id="bot-choice"></i>
                     </div>
                 </div>
-                <div class="show-choice">
-                    <i id="bot-choice-icon"></i>
-                </div>
             </div>
+
+            <div id="player-choices">
+                <button>Rock</button>
+                <button>Paper</button>
+                <button>Scissors</button>
+            </div>
+
+            <button id="btn-play-again">Play Again</button>
+
+            <footer>
+                <span>&copy;</span>
+                <a href="https://www.theodinproject.com" target="_blank">
+                    2022 The Odin Project
+                    <img src="images/odin-lined.png" width="20px" />
+                </a>
+            </footer>
         </div>
-        <div id="button-options">
-            <button class="option" id="btn-rock">
-                Rock
-            </button>
-            <button class="option" id="btn-paper">
-                Paper
-            </button>
-            <button class="option" id="btn-scissors">
-                Scissors
-            </button>
-        </div>
-        <button id="btn-play-again">Play Again</button>
-        <footer>
-            <span>&copy;</span> 
-            <a href="https://www.theodinproject.com" target="_blank">
-                2022 The Odin Project
-                <img src="images/odin-lined.png" width="20px">
-            </a>
-        </footer>
-    </div>
-</body>
+    </body>
 </html>
