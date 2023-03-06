@@ -1,112 +1,100 @@
-const playerOptions = document.querySelectorAll('.option');
+const playerChoiceBtns = document.querySelectorAll('#player-choices > button');
 const playAgainBtn = document.querySelector('#btn-play-again');
-const results = document.querySelector('#results');
+const roundResult = document.querySelector('#round-result');
 
-const rockBtn = document.querySelector('#btn-rock'),
-      paperBtn = document.querySelector('#btn-paper'),
-      scissorsBtn = document.querySelector('#btn-scissors');
+const rockBtn = document.querySelector('#btn-rock');
+const paperBtn = document.querySelector('#btn-paper');
+const scissorsBtn = document.querySelector('#btn-scissors');
 
-const playerLives = document.querySelector('.player'),
-      botLives = document.querySelector('.bot');
+const playerLivesDisplay = document.querySelector('.player.lives');
+const botLivesDisplay = document.querySelector('.bot.lives');
 
-const playerIcon = document.querySelector('#player-choice-icon'),
-      botIcon = document.querySelector('#bot-choice-icon');
+let playerLives = 5;
+let botLives = 5;
 
-let playerScore = 5, 
-    botScore = 5;
-
+let player;
+let bot;
 
 function getRandomChoice() {
-    let randomChoice = Math.floor(Math.random() * 3) + 1;
-
-    return (randomChoice === 1 ) ? 'Rock' 
-        : (randomChoice === 3) ? 'Paper' : 'Scissors';
+    let num = Math.floor(Math.random() * 3) + 1;
+    return num === 1 ? 'Rock' : num === 3 ? 'Paper' : 'Scissors';
 }
 
-function hideButtons() {
-    rockBtn.style.display = 'none';
-    paperBtn.style.display = 'none';
-    scissorsBtn.style.display = 'none';
+function displayChoices(player, bot) {
+    const rock = 'fa-solid fa-hand-back-fist';
+    const paper = 'fa-solid fa-hand';
+    const scissors = 'fa-solid fa-hand-scissors';
 
+    document.querySelector('#player-choice').classList =
+        player === 'Rock' ? rock : player === 'Paper' ? paper : scissors;
+
+    document.querySelector('#bot-choice').classList =
+        bot === 'Rock' ? rock : bot === 'Paper' ? paper : scissors;
+}
+
+function displayWinner(text, color) {
+    roundResult.textContent = text;
+    roundResult.style.color = color;
+
+    playerChoiceBtns.forEach((btn) => (btn.style.display = 'none'));
     playAgainBtn.style.display = 'block';
 }
 
-function displayChoice(player, bot) {
-    const rockClass = 'fa-solid fa-hand-back-fist', 
-          paperClass = 'fa-solid fa-hand',
-          scissorsClass = 'fa-solid fa-hand-scissors';
-
-    (player === 'Rock') ? playerIcon.classList = rockClass 
-        : (player === 'Paper') ? playerIcon.classList = paperClass 
-        : playerIcon.classList = scissorsClass;
-
-    (bot === 'Rock') ? botIcon.classList = rockClass 
-        : (bot === 'Paper') ? botIcon.classList = paperClass 
-        : botIcon.classList = scissorsClass;
+function getWinner(playerWins) {
+    if (playerWins) {
+        roundResult.textContent = `You WIN! ${player} beats ${bot}!`;
+        botLivesDisplay.removeChild(botLivesDisplay.lastElementChild);
+        botLives--;
+    } else {
+        roundResult.textContent = `You LOSE! ${bot} beats ${player}!`;
+        playerLivesDisplay.removeChild(playerLivesDisplay.lastElementChild);
+        playerLives--;
+    }
 }
 
 function playRound(e) {
-    const playerChoice = e.target.innerText;
-    const botChoice = getRandomChoice();
+    player = e.target.innerText;
+    bot = getRandomChoice();
 
-    displayChoice(playerChoice, botChoice);
+    displayChoices(player, bot);
 
-    (playerChoice === botChoice) ? results.textContent = `It's a DRAW!`
-        : (playerChoice === 'Rock') ? gameLogic('Scissors') 
-        : (playerChoice === 'Paper') ? gameLogic('Rock') : gameLogic('Paper');
-
-    function gameLogic(choice) {
-        if (botChoice === choice) {
-            botLives.removeChild(botLives.lastElementChild);
-            results.textContent = `You WIN! ${playerChoice} beats ${botChoice}!`;
-            botScore--;
-        } else {
-            playerLives.removeChild(playerLives.lastElementChild);
-            results.textContent = `You LOSE! ${botChoice} beats ${playerChoice}!`;
-            playerScore--;
-        }
+    if (player === bot) {
+        roundResult.textContent = `It's a DRAW!`;
+    } else if (player === 'Rock') {
+        bot === 'Scissors' ? getWinner(true) : getWinner(false);
+    } else if (player === 'Paper') {
+        bot === 'Rock' ? getWinner(true) : getWinner(false);
+    } else {
+        bot === 'Paper' ? getWinner(true) : getWinner(false);
     }
+
+    if (botLives === 0) displayWinner('YOU WIN THE GAME!', 'var(--green)');
+    if (playerLives === 0) displayWinner('YOU LOSE THE GAME!', 'var(--red)');
 }
 
-function startGame(e) {
-    console.log(e);
-    if (playerScore > 0 && botScore > 0) playRound(e);
+function reset() {
+    playerLives = 5;
+    botLives = 5;
+    gameIsOver = false;
 
-    if (botScore === 0) {
-        results.textContent = 'YOU WIN THE GAME!';
-        results.style.color = 'var(--green)';
-        hideButtons();
-    } else if (playerScore === 0) {
-        results.textContent = 'YOU LOSE THE GAME!';
-        results.style.color = 'var(--red)';
-        hideButtons();
-    }
-}
+    roundResult.textContent = 'You have 5 lives!';
+    roundResult.style.color = 'var(--white)';
 
-function resetGame() {
-    playerScore = 5;
-    botScore = 5;
+    playAgainBtn.style.display = 'none';
 
-    results.textContent = 'You have 5 lives!';
-    results.style.color = 'var(--white)';
+    playerChoiceBtns.forEach((btn) => (btn.style.display = 'inline-block'));
 
-    playerIcon.removeAttribute('class');
-    botIcon.removeAttribute('class');
+    document.querySelectorAll('.lives').forEach((e) => (e.innerHTML = ''));
 
-    rockBtn.style.display = 'inline-block';
-    paperBtn.style.display = 'inline-block';
-    scissorsBtn.style.display = 'inline-block';
-
-    playerLives.innerHTML = '';
-    botLives.innerHTML = '';
+    document
+        .querySelectorAll('.choice-display > i')
+        .forEach((e) => e.removeAttribute('class'));
 
     for (let i = 0; i < 5; i++) {
-        playerLives.innerHTML += '<div></div>';
-        botLives.innerHTML += '<div></div>';
+        playerLivesDisplay.append(document.createElement('div'));
+        botLivesDisplay.append(document.createElement('div'));
     }
-    
-    playAgainBtn.style.display = 'none';
 }
 
-playerOptions.forEach(btn => btn.addEventListener('click', startGame));
-playAgainBtn.addEventListener('click', resetGame);
+playerChoiceBtns.forEach((btn) => btn.addEventListener('click', playRound));
+playAgainBtn.addEventListener('click', reset);
