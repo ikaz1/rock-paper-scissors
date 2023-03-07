@@ -74,7 +74,7 @@ hr:last-of-type {
 }
 
 .lives {
-    width: 175px;
+    width: 180px;
     height: 40px;
     margin: 10px 0 0 15px;
     padding: 5px;
@@ -114,17 +114,16 @@ hr:last-of-type {
     border-radius: 10px;
 }
 
+.choice-display i {
+    font-size: 6rem;
+}
+
 .fa-user {
     color: var(--blue);
 }
 
 .fa-robot {
     color: var(--red);
-}
-
-#player-choice-icon,
-#bot-choice-icon {
-    font-size: 6rem;
 }
 
 #btn-play-again {
