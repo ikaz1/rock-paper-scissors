@@ -21,14 +21,14 @@ function getRandomChoice() {
 }
 
 function displayChoices(player, bot) {
-    const rock = 'fa-solid fa-hand-back-fist';
-    const paper = 'fa-solid fa-hand';
-    const scissors = 'fa-solid fa-hand-scissors';
+    const rock = 'fa-regular fa-hand-back-fist';
+    const paper = 'fa-regular fa-hand';
+    const scissors = 'fa-regular fa-hand-scissors';
 
-    document.querySelector('#player-choice').classList =
+    document.querySelector('#player-choice').className =
         player === 'Rock' ? rock : player === 'Paper' ? paper : scissors;
 
-    document.querySelector('#bot-choice').classList =
+    document.querySelector('#bot-choice').className =
         bot === 'Rock' ? rock : bot === 'Paper' ? paper : scissors;
 }
 
@@ -75,7 +75,6 @@ function playRound(e) {
 function reset() {
     playerLives = 5;
     botLives = 5;
-    gameIsOver = false;
 
     roundResult.textContent = 'You have 5 lives!';
     roundResult.style.color = 'var(--white)';
@@ -88,7 +87,7 @@ function reset() {
 
     document
         .querySelectorAll('.choice-display > i')
-        .forEach((e) => e.removeAttribute('class'));
+        .forEach((e) => (e.className = ''));
 
     for (let i = 0; i < 5; i++) {
         playerLivesDisplay.append(document.createElement('div'));
